@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManagerX : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public EnemyX enemtX;
     public GameObject powerupPrefab;
 
     private float spawnRangeX = 10;
@@ -13,10 +14,14 @@ public class SpawnManagerX : MonoBehaviour
 
     public int enemyCount;
     public int waveCount = 1;
+    public float enemyIncreasedSpeed = 10;
 
 
     public GameObject player;
 
+    void Start() {
+        enemtX = enemyPrefab.GetComponent<EnemyX>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -24,6 +29,8 @@ public class SpawnManagerX : MonoBehaviour
 
         if (enemyCount == 0)
         {
+            enemyIncreasedSpeed += 5;
+            Debug.Log(enemyIncreasedSpeed);
             SpawnEnemyWave(waveCount);
         }
 
